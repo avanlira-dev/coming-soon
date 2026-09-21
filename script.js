@@ -1,3 +1,6 @@
+// CONFIGURATION: Replace with your Google Apps Script Web App URL after deploying
+const GOOGLE_SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxEPZrQ6fe9F1rFNcJheu3q5xjUc6KnctAp_lB33ImWxnYmGIY3TYlWPba-ag9z6mLNgg/exec';
+
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize Lucide icons
   if (window.lucide) {
@@ -119,19 +122,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Waitlist Form Submit Handler
   if (waitlistForm) {
-    waitlistForm.addEventListener('submit', (e) => {
+    waitlistForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('waitlist-name')?.value || '';
       const email = document.getElementById('waitlist-email')?.value || '';
       const biz = document.getElementById('waitlist-biz')?.value || '';
+      const feature = modalFeatureLabel ? modalFeatureLabel.textContent.replace(/^ \((.*)\)$/, '$1') : '';
 
-      // Save submission locally
-      const entry = { name, email, biz, date: new Date().toISOString() };
-      const existing = JSON.parse(localStorage.getItem('avanlira_waitlist') || '[]');
-      existing.push(entry);
-      localStorage.setItem('avanlira_waitlist', JSON.stringify(existing));
+      const submitBtn = document.getElementById('waitlist-submit-btn');
+      const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit Early Access';
 
-      // Show success screen
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+      }
+
+      const entry = {
+        name,
+        email,
+        biz,
+        feature: feature || 'General Waitlist',
+        date: new Date().toISOString()
+      };
+
+      // 1. Save submission locally in browser as a backup
+      try {
+        const existing = JSON.parse(localStorage.getItem('avanlira_waitlist') || '[]');
+        existing.push(entry);
+        localStorage.setItem('avanlira_waitlist', JSON.stringify(existing));
+      } catch (err) {
+        console.warn('LocalStorage backup error:', err);
+      }
+
+      // 2. Send submission to Google Sheets API endpoint if configured
+      if (GOOGLE_SHEET_WEB_APP_URL && GOOGLE_SHEET_WEB_APP_URL.trim() !== '') {
+        try {
+          await fetch(GOOGLE_SHEET_WEB_APP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'text/plain'
+            },
+            body: JSON.stringify(entry)
+          });
+        } catch (error) {
+          console.error('Error submitting waitlist to Google Sheet:', error);
+        }
+      }
+
+      // Reset button state
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
+
+      // Reset input fields
+      waitlistForm.reset();
+
+      // 3. Show success screen
       if (waitlistForm && waitlistSuccess) {
         waitlistForm.classList.add('hidden');
         waitlistSuccess.classList.remove('hidden');
