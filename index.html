@@ -80,7 +80,22 @@
 
 <body class="min-h-screen overflow-x-hidden bg-background text-foreground">
 
-  <!-- Header -->
+  <!-- Prominent Top Announcement Header Banner -->
+  <div
+    class="bg-primary text-primary-foreground py-2.5 px-4 text-center text-xs sm:text-sm font-medium flex items-center justify-center gap-3 border-b border-primary/20">
+    <span
+      class="inline-flex items-center gap-1.5 bg-secondary text-secondary-foreground font-bold px-2.5 py-0.5 rounded-full text-[11px] uppercase tracking-wider shadow-sm">
+      <span class="h-2 w-2 rounded-full bg-primary animate-ping"></span>
+      Coming Soon
+    </span>
+    <span><strong>Avanlira is launching soon!</strong> Join our early access list for exclusive launch perks.</span>
+    <button onclick="openWaitlist('Top Announcement Banner')"
+      class="underline hover:text-secondary font-bold hidden md:inline-flex items-center gap-1">
+      Join Early Access <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i>
+    </button>
+  </div>
+
+  <!-- Header Navigation -->
   <header class="sticky top-0 z-40 border-b bg-background/95 backdrop-blur">
     <div class="container mx-auto flex h-16 items-center justify-between px-4">
       <button type="button" class="flex items-center gap-3 font-bold text-left hover:bg-transparent"
@@ -104,7 +119,7 @@
         <span class="badge-coming-soon">
           Coming Soon
         </span>
-        <button class="btn-coming-soon py-1.5 px-4 text-xs" onclick="openWaitlist('Header')">
+        <button class="btn-coming-soon py-1.5 px-4 text-xs" onclick="openWaitlist('Header Nav')">
           Join Early Access
         </button>
       </div>
@@ -140,10 +155,15 @@
     <section class="relative border-b bg-gradient-subtle">
       <div class="container mx-auto grid items-center gap-12 px-4 py-16 lg:grid-cols-[0.85fr_1.15fr] lg:py-24">
         <div class="max-w-2xl">
+          <!-- Prominent Coming Soon Hero Pill -->
           <div
-            class="mb-5 inline-flex items-center gap-2 rounded-full border px-3.5 py-1 text-xs font-semibold bg-secondary/10 text-foreground border-secondary/30">
-            <span class="h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
-            Coming Soon · Built for Indian small businesses
+            class="mb-5 inline-flex items-center gap-2.5 rounded-full border-2 border-secondary bg-secondary/15 px-4 py-1.5 text-sm font-bold text-foreground shadow-sm">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
+            </span>
+            <span class="text-secondary font-extrabold uppercase tracking-wider">COMING SOON</span>
+            <span class="text-muted-foreground font-normal">| Built for Indian small businesses</span>
           </div>
 
           <div class="mb-4 flex items-start gap-6">
@@ -195,7 +215,8 @@
                 <span class="h-2.5 w-2.5 rounded-full bg-success"></span>
                 <span class="ml-3 text-xs font-medium text-muted-foreground">Avanlira workspace (Demo data)</span>
               </div>
-              <span class="text-[11px] font-semibold text-secondary uppercase bg-secondary/10 px-2 py-0.5 rounded">Preview</span>
+              <span
+                class="text-[11px] font-semibold text-secondary uppercase bg-secondary/10 px-2 py-0.5 rounded">Preview</span>
             </div>
 
             <div class="grid min-h-[470px] grid-cols-[64px_1fr] sm:grid-cols-[174px_1fr]">
@@ -255,7 +276,8 @@
                       class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-medium">Friendly</span>
                   </div>
                   <p class="min-h-16 text-sm leading-6 text-muted-foreground">
-                    Promote Bean & Bloom's freshly brewed specialty South Indian coffee & cardamom croissants in Jubilee Hills, Hyderabad.
+                    Promote Bean & Bloom's freshly brewed specialty South Indian coffee & cardamom croissants in Jubilee
+                    Hills, Hyderabad.
                   </p>
                   <div class="mt-4 flex justify-end">
                     <button
@@ -286,7 +308,8 @@
 
                 <div class="mt-4 flex items-center gap-3 rounded-lg border border-primary/20 bg-primary/5 p-3">
                   <i data-lucide="trending-up" class="h-5 w-5 shrink-0 text-primary"></i>
-                  <p class="text-xs leading-5"><strong>Best time to post:</strong> Friday at 11:30. Your Hyderabad audience
+                  <p class="text-xs leading-5"><strong>Best time to post:</strong> Friday at 11:30. Your Hyderabad
+                    audience
                     is most active before lunch.</p>
                 </div>
               </div>
@@ -423,7 +446,8 @@
               <i data-lucide="credit-card" class="h-5 w-5 text-primary"></i>
             </span>
             <h3 class="text-lg font-bold">One clear plan</h3>
-            <p class="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">Start free at launch, then upgrade only when your
+            <p class="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">Start free at launch, then upgrade only
+              when your
               business needs more.</p>
             <button class="mt-3 flex items-center text-sm font-semibold text-primary hover:underline"
               onclick="scrollToSection('pricing')">
@@ -539,18 +563,21 @@
               </div>
               <i data-lucide="instagram" class="h-5 w-5 text-muted-foreground"></i>
             </div>
-            <img src="./bakery-social-post.jpg" alt="Artisanal coffee and fresh pastries at Bean & Bloom Cafe, Hyderabad"
-              loading="lazy" class="aspect-[4/3] w-full object-cover">
+            <img src="./bakery-social-post.jpg"
+              alt="Artisanal coffee and fresh pastries at Bean & Bloom Cafe, Hyderabad" loading="lazy"
+              class="aspect-[4/3] w-full object-cover">
             <div class="p-4">
               <div class="mb-3 flex items-center gap-2">
-                <span
-                  class="rounded-md border bg-secondary/10 px-2.5 py-0.5 text-xs font-medium text-foreground">Warm & Welcoming</span>
+                <span class="rounded-md border bg-secondary/10 px-2.5 py-0.5 text-xs font-medium text-foreground">Warm &
+                  Welcoming</span>
                 <span class="rounded-md border px-2.5 py-0.5 text-xs font-medium">Weekend Special</span>
               </div>
               <p class="text-sm leading-6">
-                <strong>Freshly brewed every morning in Jubilee Hills! ☕✨</strong> Pair our slow-drip South Indian specialty roast with hand-baked cardamom croissants. Drop by early before it sells out!
+                <strong>Freshly brewed every morning in Jubilee Hills! ☕✨</strong> Pair our slow-drip South Indian
+                specialty roast with hand-baked cardamom croissants. Drop by early before it sells out!
               </p>
-              <p class="mt-3 text-sm font-medium text-primary">#BeanAndBloom #HyderabadCafes #JubileeHills #ShopLocalHyderabad #HyderabadEats</p>
+              <p class="mt-3 text-sm font-medium text-primary">#BeanAndBloom #HyderabadCafes #JubileeHills
+                #ShopLocalHyderabad #HyderabadEats</p>
               <div class="mt-4 flex items-center justify-between border-t pt-4">
                 <span class="flex items-center gap-2 text-xs text-muted-foreground">
                   <i data-lucide="clock-3" class="h-4 w-4"></i>Best time: Sat, 9:30 AM
@@ -592,9 +619,11 @@
               </div>
               <p class="mt-3 text-sm font-semibold">1,248 likes (Sample data)</p>
               <p class="mt-2 text-sm leading-6">
-                <strong>Bean & Bloom</strong> <strong>Weekend morning vibes in Jubilee Hills! ☕</strong> Fresh coffee, artisanal bakes, and vibrant cafe vibes. Come say hi!
+                <strong>Bean & Bloom</strong> <strong>Weekend morning vibes in Jubilee Hills! ☕</strong> Fresh coffee,
+                artisanal bakes, and vibrant cafe vibes. Come say hi!
               </p>
-              <p class="mt-3 text-sm font-medium text-primary">#BeanAndBloom #HyderabadCafes #JubileeHills #HyderabadEats</p>
+              <p class="mt-3 text-sm font-medium text-primary">#BeanAndBloom #HyderabadCafes #JubileeHills
+                #HyderabadEats</p>
               <div class="mt-4 flex flex-wrap items-center justify-between gap-3 border-t pt-4">
                 <span class="text-xs text-muted-foreground">Ready for Instagram Reels & Stories · 10s</span>
                 <button
@@ -630,7 +659,8 @@
         <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
           <p class="text-sm font-semibold text-primary tracking-wider uppercase">PLANNED LAUNCH PRICING</p>
           <h2 class="mt-3 text-3xl font-bold md:text-4xl">Planned Launch Plans</h2>
-          <p class="mt-4 text-lg text-muted-foreground">Estimated launch pricing in INR. Free plan available at launch with no credit card required.</p>
+          <p class="mt-4 text-lg text-muted-foreground">Estimated launch pricing in INR. Free plan available at launch
+            with no credit card required.</p>
 
           <!-- Toggle Button -->
           <div class="mt-5 flex rounded-lg border bg-background p-1">
@@ -834,7 +864,8 @@
               <i data-lucide="chevron-down" class="h-4 w-4 transition-transform"></i>
             </summary>
             <p class="mt-3 text-sm leading-6 text-muted-foreground">
-              Avanlira is currently in development. Join our early access waitlist to get notified the moment we launch!
+              Avanlira is currently in active development. Join our early access waitlist to get notified the moment we
+              launch!
             </p>
           </details>
 
@@ -866,7 +897,8 @@
         <div class="flex flex-wrap items-center gap-4">
           <a href="#" class="hover:text-foreground hover:underline">Terms of Service</a>
           <a href="#" class="hover:text-foreground hover:underline">Privacy Policy</a>
-          <a href="mailto:avanlira.official@gmail.com" class="hover:text-foreground hover:underline">avanlira.official@gmail.com</a>
+          <a href="mailto:avanlira.official@gmail.com"
+            class="hover:text-foreground hover:underline">avanlira.official@gmail.com</a>
         </div>
       </div>
 
@@ -916,7 +948,8 @@
         </div>
 
         <div class="flex justify-end gap-3 border-t pt-4">
-          <button type="button" class="rounded-md border border-input bg-background px-4 py-2 text-sm font-semibold hover:bg-muted"
+          <button type="button"
+            class="rounded-md border border-input bg-background px-4 py-2 text-sm font-semibold hover:bg-muted"
             onclick="closeWaitlist()">
             Cancel
           </button>
@@ -933,10 +966,12 @@
         </div>
         <h4 class="text-lg font-bold">You're on the list! 🎉</h4>
         <p class="text-sm text-muted-foreground">
-          Thank you for joining our early access waitlist. We'll send launch updates and early access invites directly to your inbox.
+          Thank you for joining our early access waitlist. We'll send launch updates and early access invites directly
+          to your inbox.
         </p>
         <div class="pt-3">
-          <button type="button" class="rounded-md bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+          <button type="button"
+            class="rounded-md bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
             onclick="closeWaitlist()">
             Back to site
           </button>
