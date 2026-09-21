@@ -97,13 +97,16 @@
         <button class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           onclick="scrollToSection('example')">Example</button>
         <button class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          onclick="scrollToSection('pricing')">Pricing</button>
+          onclick="scrollToSection('pricing')">Launch Plans</button>
       </nav>
 
       <div class="hidden items-center gap-3 sm:flex">
         <span class="badge-coming-soon">
           Coming Soon
         </span>
+        <button class="btn-coming-soon py-1.5 px-4 text-xs" onclick="openWaitlist('Header')">
+          Join Early Access
+        </button>
       </div>
 
       <button class="md:hidden p-2 text-foreground" id="mobile-menu-btn" aria-label="Open navigation">
@@ -121,9 +124,12 @@
         <button class="text-left font-medium capitalize text-muted-foreground hover:text-foreground py-1"
           onclick="scrollToSection('example')">Example</button>
         <button class="text-left font-medium capitalize text-muted-foreground hover:text-foreground py-1"
-          onclick="scrollToSection('pricing')">Pricing</button>
-        <div class="pt-2">
+          onclick="scrollToSection('pricing')">Launch Plans</button>
+        <div class="pt-2 flex flex-col gap-2">
           <span class="badge-coming-soon w-full justify-center py-2">Coming Soon</span>
+          <button class="btn-coming-soon w-full py-2.5 text-sm" onclick="openWaitlist('Mobile Menu')">
+            Join Early Access
+          </button>
         </div>
       </div>
     </div>
@@ -135,8 +141,9 @@
       <div class="container mx-auto grid items-center gap-12 px-4 py-16 lg:grid-cols-[0.85fr_1.15fr] lg:py-24">
         <div class="max-w-2xl">
           <div
-            class="mb-5 inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold bg-secondary/10 text-foreground border-secondary/30">
-            Built for Indian small businesses
+            class="mb-5 inline-flex items-center gap-2 rounded-full border px-3.5 py-1 text-xs font-semibold bg-secondary/10 text-foreground border-secondary/30">
+            <span class="h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
+            Coming Soon · Built for Indian small businesses
           </div>
 
           <div class="mb-4 flex items-start gap-6">
@@ -156,8 +163,9 @@
           </p>
 
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <button class="btn-coming-soon px-7 text-base" onclick="openComingSoon('Avanlira Workspace')">
-              Coming Soon <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+            <button class="btn-coming-soon px-7 text-base bg-primary hover:bg-primary/90 text-primary-foreground"
+              onclick="openWaitlist('Hero CTA')">
+              Join Early Access <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
             </button>
             <button
               class="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-semibold hover:bg-muted transition-colors"
@@ -166,25 +174,30 @@
             </button>
           </div>
 
+          <!-- Trust Badges -->
           <div class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
+            <span class="flex items-center gap-2"><i data-lucide="check" class="h-4 w-4 text-success"></i>Free plan
+              available at launch</span>
             <span class="flex items-center gap-2"><i data-lucide="check" class="h-4 w-4 text-success"></i>No card
               required</span>
             <span class="flex items-center gap-2"><i data-lucide="check" class="h-4 w-4 text-success"></i>20 free
               content creations</span>
-            <span class="flex items-center gap-2"><i data-lucide="check" class="h-4 w-4 text-success"></i>Cancel
-              anytime</span>
           </div>
         </div>
 
-        <!-- Interactive Workspace Mockup -->
+        <!-- Interactive Workspace Mockup (Demo Data Labeled) -->
         <div class="relative mx-auto w-full max-w-3xl">
           <div class="overflow-hidden rounded-lg border bg-card shadow-lg">
-            <div class="flex h-11 items-center gap-2 border-b px-4">
-              <span class="h-2.5 w-2.5 rounded-full bg-secondary"></span>
-              <span class="h-2.5 w-2.5 rounded-full bg-warning"></span>
-              <span class="h-2.5 w-2.5 rounded-full bg-success"></span>
-              <span class="ml-3 text-xs font-medium text-muted-foreground">Avanlira workspace preview</span>
+            <div class="flex h-11 items-center justify-between border-b px-4">
+              <div class="flex items-center gap-2">
+                <span class="h-2.5 w-2.5 rounded-full bg-secondary"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-warning"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-success"></span>
+                <span class="ml-3 text-xs font-medium text-muted-foreground">Avanlira workspace (Demo data)</span>
+              </div>
+              <span class="text-[11px] font-semibold text-secondary uppercase bg-secondary/10 px-2 py-0.5 rounded">Preview</span>
             </div>
+
             <div class="grid min-h-[470px] grid-cols-[64px_1fr] sm:grid-cols-[174px_1fr]">
               <aside class="border-r bg-sidebar p-3">
                 <div class="mb-5 flex items-center gap-2 px-1">
@@ -242,13 +255,12 @@
                       class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-medium">Friendly</span>
                   </div>
                   <p class="min-h-16 text-sm leading-6 text-muted-foreground">
-                    Promote our freshly baked weekend sourdough and encourage local customers to visit before it sells
-                    out.
+                    Promote Bean & Bloom's freshly brewed specialty South Indian coffee & cardamom croissants in Jubilee Hills, Hyderabad.
                   </p>
                   <div class="mt-4 flex justify-end">
                     <button
                       class="inline-flex items-center rounded-md bg-primary px-3.5 py-2 text-xs font-semibold text-primary-foreground hover:bg-primary/90"
-                      onclick="openComingSoon('AI Post Generator')">
+                      onclick="openWaitlist('AI Post Generator')">
                       <i data-lucide="wand-sparkles" class="mr-2 h-4 w-4"></i>Generate post
                     </button>
                   </div>
@@ -258,23 +270,23 @@
                   <div class="rounded-lg border p-3">
                     <p class="text-xs text-muted-foreground">Posts created</p>
                     <p class="mt-1 text-xl font-bold">24</p>
-                    <span class="text-xs text-success font-medium">Unlimited creations</span>
+                    <span class="text-[10px] text-muted-foreground">Demo data</span>
                   </div>
                   <div class="rounded-lg border p-3">
                     <p class="text-xs text-muted-foreground">Scheduled</p>
                     <p class="mt-1 text-xl font-bold">8</p>
-                    <span class="text-xs text-muted-foreground">Next: Friday</span>
+                    <span class="text-[10px] text-muted-foreground">Next: Friday</span>
                   </div>
                   <div class="rounded-lg border p-3">
                     <p class="text-xs text-muted-foreground">Engagement</p>
                     <p class="mt-1 text-xl font-bold">6.4%</p>
-                    <span class="text-xs text-success font-medium">Growing steadily</span>
+                    <span class="text-[10px] text-success font-medium">Sample metrics</span>
                   </div>
                 </div>
 
                 <div class="mt-4 flex items-center gap-3 rounded-lg border border-primary/20 bg-primary/5 p-3">
                   <i data-lucide="trending-up" class="h-5 w-5 shrink-0 text-primary"></i>
-                  <p class="text-xs leading-5"><strong>Best time to post:</strong> Friday at 11:30. Your local audience
+                  <p class="text-xs leading-5"><strong>Best time to post:</strong> Friday at 11:30. Your Hyderabad audience
                     is most active before lunch.</p>
                 </div>
               </div>
@@ -303,7 +315,7 @@
           <p class="text-sm font-semibold text-primary tracking-wider uppercase">YOUR COMPLETE WORKSPACE</p>
           <h2 class="mt-3 text-3xl font-bold md:text-4xl">See every tool included</h2>
           <p class="mt-4 text-lg leading-8 text-muted-foreground">Explore what is included in the workspace. Avanlira
-            brings all marketing tools together for Indian businesses.</p>
+            brings all marketing tools together for Indian small businesses.</p>
         </div>
 
         <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -314,9 +326,9 @@
             </span>
             <h3 class="text-lg font-bold">AI Content</h3>
             <p class="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">Write on-brand posts in seconds with
-              localized tone.</p>
+              localized Indian tone.</p>
             <button class="mt-3 flex items-center text-sm font-semibold text-primary hover:underline"
-              onclick="openComingSoon('AI Content')">
+              onclick="openWaitlist('AI Content')">
               Open preview <i data-lucide="chevron-right" class="ml-1 h-4 w-4"></i>
             </button>
           </div>
@@ -330,7 +342,7 @@
             <p class="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">Turn an idea into a short-form promotional
               social video.</p>
             <button class="mt-3 flex items-center text-sm font-semibold text-primary hover:underline"
-              onclick="openComingSoon('Video Studio')">
+              onclick="openWaitlist('Video Studio')">
               Open preview <i data-lucide="chevron-right" class="ml-1 h-4 w-4"></i>
             </button>
           </div>
@@ -344,7 +356,7 @@
             <p class="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">Keep every campaign and draft organised in
               one place.</p>
             <button class="mt-3 flex items-center text-sm font-semibold text-primary hover:underline"
-              onclick="openComingSoon('Content Library')">
+              onclick="openWaitlist('Content Library')">
               Open preview <i data-lucide="chevron-right" class="ml-1 h-4 w-4"></i>
             </button>
           </div>
@@ -358,7 +370,7 @@
             <p class="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">Plan posts, organize calendar drops and get
               notifications.</p>
             <button class="mt-3 flex items-center text-sm font-semibold text-primary hover:underline"
-              onclick="openComingSoon('Scheduler')">
+              onclick="openWaitlist('Scheduler')">
               Open preview <i data-lucide="chevron-right" class="ml-1 h-4 w-4"></i>
             </button>
           </div>
@@ -372,7 +384,7 @@
             <p class="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">Find better local keywords and Google
               Business post ideas.</p>
             <button class="mt-3 flex items-center text-sm font-semibold text-primary hover:underline"
-              onclick="openComingSoon('Local SEO')">
+              onclick="openWaitlist('Local SEO')">
               Open preview <i data-lucide="chevron-right" class="ml-1 h-4 w-4"></i>
             </button>
           </div>
@@ -386,7 +398,7 @@
             <p class="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">See what nearby businesses are posting and
               benchmark strategy.</p>
             <button class="mt-3 flex items-center text-sm font-semibold text-primary hover:underline"
-              onclick="openComingSoon('Competitor Analysis')">
+              onclick="openWaitlist('Competitor Analysis')">
               Open preview <i data-lucide="chevron-right" class="ml-1 h-4 w-4"></i>
             </button>
           </div>
@@ -400,7 +412,7 @@
             <p class="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">Understand what is driving growth and
               customer engagement.</p>
             <button class="mt-3 flex items-center text-sm font-semibold text-primary hover:underline"
-              onclick="openComingSoon('Analytics')">
+              onclick="openWaitlist('Analytics')">
               Open preview <i data-lucide="chevron-right" class="ml-1 h-4 w-4"></i>
             </button>
           </div>
@@ -411,11 +423,11 @@
               <i data-lucide="credit-card" class="h-5 w-5 text-primary"></i>
             </span>
             <h3 class="text-lg font-bold">One clear plan</h3>
-            <p class="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">Start free, then upgrade only when your
+            <p class="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">Start free at launch, then upgrade only when your
               business needs more.</p>
             <button class="mt-3 flex items-center text-sm font-semibold text-primary hover:underline"
               onclick="scrollToSection('pricing')">
-              See pricing <i data-lucide="chevron-right" class="ml-1 h-4 w-4"></i>
+              See launch plans <i data-lucide="chevron-right" class="ml-1 h-4 w-4"></i>
             </button>
           </div>
         </div>
@@ -467,7 +479,7 @@
       </div>
     </section>
 
-    <!-- Realistic Result Showcase Section -->
+    <!-- Realistic Result Showcase Section (Indian Business Demo) -->
     <section id="example" class="py-20 md:py-28">
       <div class="container mx-auto grid items-center gap-12 px-4 lg:grid-cols-2">
         <div>
@@ -506,47 +518,46 @@
           </ul>
 
           <div class="mt-8">
-            <button class="btn-coming-soon" onclick="openComingSoon('Content Creator')">
-              Coming Soon <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+            <button class="btn-coming-soon" onclick="openWaitlist('Content Creator Demo')">
+              Join Early Access <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
             </button>
           </div>
         </div>
 
-        <!-- Post Cards Showcase -->
+        <!-- Post Cards Showcase (Indian Demo Business: Bean & Bloom, Hyderabad) -->
         <div class="mx-auto w-full max-w-xl space-y-6">
           <!-- Article 1: Photo Post -->
           <article class="overflow-hidden rounded-lg border bg-card shadow-lg">
             <div class="flex items-center justify-between px-4 py-3 border-b">
               <div class="flex items-center gap-3">
                 <span
-                  class="flex h-10 w-10 items-center justify-center rounded-full bg-secondary/10 text-sm font-bold text-secondary">HB</span>
+                  class="flex h-10 w-10 items-center justify-center rounded-full bg-secondary/10 text-sm font-bold text-secondary">BB</span>
                 <div>
-                  <p class="text-sm font-semibold">Harbour Bakehouse</p>
-                  <p class="text-xs text-muted-foreground">Brighton · Sponsored draft</p>
+                  <p class="text-sm font-semibold">Bean & Bloom</p>
+                  <p class="text-xs text-muted-foreground">Jubilee Hills, Hyderabad · Demo draft</p>
                 </div>
               </div>
               <i data-lucide="instagram" class="h-5 w-5 text-muted-foreground"></i>
             </div>
-            <img src="./bakery-social-post.jpg" alt="Fresh sourdough loaf on a green-tiled bakery counter"
+            <img src="./bakery-social-post.jpg" alt="Artisanal coffee and fresh pastries at Bean & Bloom Cafe, Hyderabad"
               loading="lazy" class="aspect-[4/3] w-full object-cover">
             <div class="p-4">
               <div class="mb-3 flex items-center gap-2">
                 <span
-                  class="rounded-md border bg-secondary/10 px-2.5 py-0.5 text-xs font-medium text-foreground">Friendly</span>
-                <span class="rounded-md border px-2.5 py-0.5 text-xs font-medium">Local offer</span>
+                  class="rounded-md border bg-secondary/10 px-2.5 py-0.5 text-xs font-medium text-foreground">Warm & Welcoming</span>
+                <span class="rounded-md border px-2.5 py-0.5 text-xs font-medium">Weekend Special</span>
               </div>
               <p class="text-sm leading-6">
-                <strong>Fresh from the oven this Saturday.</strong> Our slow-fermented sourdough is baked in small
-                batches for a crisp crust and soft, flavourful centre. Pop in early—when it’s gone, it’s gone! 🍞
+                <strong>Freshly brewed every morning in Jubilee Hills! ☕✨</strong> Pair our slow-drip South Indian specialty roast with hand-baked cardamom croissants. Drop by early before it sells out!
               </p>
-              <p class="mt-3 text-sm font-medium text-primary">#BrightonBakery #ShopLocal #FreshSourdough</p>
+              <p class="mt-3 text-sm font-medium text-primary">#BeanAndBloom #HyderabadCafes #JubileeHills #ShopLocalHyderabad #HyderabadEats</p>
               <div class="mt-4 flex items-center justify-between border-t pt-4">
                 <span class="flex items-center gap-2 text-xs text-muted-foreground">
-                  <i data-lucide="clock-3" class="h-4 w-4"></i>Best time: Sat, 9:30
+                  <i data-lucide="clock-3" class="h-4 w-4"></i>Best time: Sat, 9:30 AM
                 </span>
                 <button
                   class="inline-flex items-center rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium hover:bg-muted"
-                  onclick="openComingSoon('Content Style Preset')">
+                  onclick="openWaitlist('Content Style Preset')">
                   <i data-lucide="copy" class="mr-2 h-3.5 w-3.5"></i>Use this style
                 </button>
               </div>
@@ -558,10 +569,10 @@
             <div class="flex items-center justify-between px-4 py-3 border-b">
               <div class="flex items-center gap-3">
                 <span
-                  class="flex h-10 w-10 items-center justify-center rounded-full bg-secondary/10 text-sm font-bold text-secondary">HB</span>
+                  class="flex h-10 w-10 items-center justify-center rounded-full bg-secondary/10 text-sm font-bold text-secondary">BB</span>
                 <div>
-                  <p class="text-sm font-semibold">Harbour Bakehouse</p>
-                  <p class="text-xs text-muted-foreground">Brighton · Sponsored</p>
+                  <p class="text-sm font-semibold">Bean & Bloom</p>
+                  <p class="text-xs text-muted-foreground">Jubilee Hills, Hyderabad · Demo reel</p>
                 </div>
               </div>
               <i data-lucide="more-horizontal" class="h-5 w-5 text-muted-foreground"></i>
@@ -579,18 +590,16 @@
                 </div>
                 <i data-lucide="bookmark" class="h-5 w-5 cursor-pointer"></i>
               </div>
-              <p class="mt-3 text-sm font-semibold">1,248 likes</p>
+              <p class="mt-3 text-sm font-semibold">1,248 likes (Sample data)</p>
               <p class="mt-2 text-sm leading-6">
-                <strong>Harbour Bakehouse</strong> <strong>Fresh from the oven this Saturday.</strong> Our
-                slow-fermented sourdough is baked in small batches for a crisp crust and soft, flavourful centre. Pop in
-                early—when it’s gone, it’s gone! 🍞
+                <strong>Bean & Bloom</strong> <strong>Weekend morning vibes in Jubilee Hills! ☕</strong> Fresh coffee, artisanal bakes, and vibrant cafe vibes. Come say hi!
               </p>
-              <p class="mt-3 text-sm font-medium text-primary">#BrightonBakery #ShopLocal #FreshSourdough</p>
+              <p class="mt-3 text-sm font-medium text-primary">#BeanAndBloom #HyderabadCafes #JubileeHills #HyderabadEats</p>
               <div class="mt-4 flex flex-wrap items-center justify-between gap-3 border-t pt-4">
-                <span class="text-xs text-muted-foreground">Ready for Reels, TikTok and Stories · 10s</span>
+                <span class="text-xs text-muted-foreground">Ready for Instagram Reels & Stories · 10s</span>
                 <button
                   class="inline-flex items-center rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium hover:bg-muted"
-                  onclick="openComingSoon('Video Studio')">
+                  onclick="openWaitlist('Video Studio Demo')">
                   Make a video
                 </button>
               </div>
@@ -604,25 +613,24 @@
     <section class="border-y bg-foreground py-16 text-background">
       <div class="container mx-auto flex flex-col items-start justify-between gap-8 px-4 md:flex-row md:items-center">
         <div class="max-w-2xl">
-          <p class="text-sm font-semibold text-secondary uppercase tracking-wider">READY WHEN YOU ARE</p>
+          <p class="text-sm font-semibold text-secondary uppercase tracking-wider">EARLY ACCESS OPEN</p>
           <h2 class="mt-3 text-3xl font-bold md:text-4xl text-white">Bring your next campaign together in minutes.</h2>
-          <p class="mt-3 text-background/70">Avanlira is coming soon for Indian small businesses.</p>
+          <p class="mt-3 text-background/70">Avanlira is launching soon for Indian small businesses.</p>
         </div>
         <button class="btn-coming-soon bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-3 text-base"
-          onclick="openComingSoon('Avanlira Launch')">
-          Coming Soon <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+          onclick="openWaitlist('Dark Banner')">
+          Join Waitlist <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
         </button>
       </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Planned Launch Pricing Section -->
     <section id="pricing" class="bg-muted/30 py-20 md:py-28">
       <div class="container mx-auto px-4">
         <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <p class="text-sm font-semibold text-primary tracking-wider uppercase">SIMPLE PRICING</p>
-          <h2 class="mt-3 text-3xl font-bold md:text-4xl">Start free. Grow when you are ready.</h2>
-          <p class="mt-4 text-lg text-muted-foreground">Clear pricing in INR, with no credit card needed for the free
-            plan.</p>
+          <p class="text-sm font-semibold text-primary tracking-wider uppercase">PLANNED LAUNCH PRICING</p>
+          <h2 class="mt-3 text-3xl font-bold md:text-4xl">Planned Launch Plans</h2>
+          <p class="mt-4 text-lg text-muted-foreground">Estimated launch pricing in INR. Free plan available at launch with no credit card required.</p>
 
           <!-- Toggle Button -->
           <div class="mt-5 flex rounded-lg border bg-background p-1">
@@ -650,7 +658,7 @@
           <!-- Plan 1: Free -->
           <div class="relative flex h-full flex-col rounded-xl border bg-card p-6 shadow-sm">
             <h3 class="text-xl font-bold">Free</h3>
-            <p class="mt-1 text-sm text-muted-foreground min-h-10">Get started with Avanlira</p>
+            <p class="mt-1 text-sm text-muted-foreground min-h-10">Get started at launch</p>
             <div class="my-4">
               <span class="text-4xl font-bold">₹0</span>
               <span class="text-sm text-muted-foreground"> forever</span>
@@ -673,8 +681,8 @@
             </ul>
             <button
               class="mt-6 w-full rounded-md border border-input bg-background py-2.5 text-sm font-semibold hover:bg-muted"
-              onclick="openComingSoon('Free Plan')">
-              Coming Soon
+              onclick="openWaitlist('Free Plan')">
+              Join Waitlist
             </button>
           </div>
 
@@ -686,7 +694,7 @@
               <span id="strike-basic" class="mr-2 text-lg text-muted-foreground line-through">₹1,499</span>
               <span id="price-basic" class="text-4xl font-bold">₹1,199</span>
               <span id="period-basic" class="text-sm text-muted-foreground"> /month</span>
-              <p class="text-xs font-medium text-secondary mt-1">Launch offer</p>
+              <p class="text-xs font-medium text-secondary mt-1">Planned launch offer</p>
             </div>
             <ul class="flex-1 space-y-3 border-t pt-4 text-sm">
               <li class="flex items-start gap-2"><i data-lucide="check"
@@ -706,8 +714,8 @@
             </ul>
             <button
               class="mt-6 w-full rounded-md border border-input bg-background py-2.5 text-sm font-semibold hover:bg-muted"
-              onclick="openComingSoon('Basic Plan')">
-              Coming Soon
+              onclick="openWaitlist('Basic Plan')">
+              Join Waitlist
             </button>
           </div>
 
@@ -722,7 +730,7 @@
               <span id="strike-standard" class="mr-2 text-lg text-muted-foreground line-through">₹3,499</span>
               <span id="price-standard" class="text-4xl font-bold">₹2,999</span>
               <span id="period-standard" class="text-sm text-muted-foreground"> /month</span>
-              <p class="text-xs font-medium text-secondary mt-1">Launch offer</p>
+              <p class="text-xs font-medium text-secondary mt-1">Planned launch offer</p>
             </div>
             <ul class="flex-1 space-y-3 border-t pt-4 text-sm">
               <li class="flex items-start gap-2"><i data-lucide="check"
@@ -740,8 +748,8 @@
               <li class="flex items-start gap-2"><i data-lucide="check"
                   class="mt-0.5 h-4 w-4 shrink-0 text-success"></i>3 brands + 3 users</li>
             </ul>
-            <button class="btn-coming-soon mt-6 w-full py-2.5 text-sm" onclick="openComingSoon('Standard Plan')">
-              Coming Soon
+            <button class="btn-coming-soon mt-6 w-full py-2.5 text-sm" onclick="openWaitlist('Standard Plan')">
+              Join Waitlist
             </button>
           </div>
 
@@ -753,7 +761,7 @@
               <span id="strike-pro" class="mr-2 text-lg text-muted-foreground line-through">₹6,999</span>
               <span id="price-pro" class="text-4xl font-bold">₹5,999</span>
               <span id="period-pro" class="text-sm text-muted-foreground"> /month</span>
-              <p class="text-xs font-medium text-secondary mt-1">Launch offer</p>
+              <p class="text-xs font-medium text-secondary mt-1">Planned launch offer</p>
             </div>
             <ul class="flex-1 space-y-3 border-t pt-4 text-sm">
               <li class="flex items-start gap-2"><i data-lucide="check"
@@ -773,8 +781,8 @@
             </ul>
             <button
               class="mt-6 w-full rounded-md border border-input bg-background py-2.5 text-sm font-semibold hover:bg-muted"
-              onclick="openComingSoon('Pro Plan')">
-              Coming Soon
+              onclick="openWaitlist('Pro Plan')">
+              Join Waitlist
             </button>
           </div>
         </div>
@@ -822,11 +830,11 @@
 
           <details class="rounded-lg border bg-card p-4">
             <summary class="cursor-pointer font-semibold flex items-center justify-between">
-              Can I start without a card?
+              When is Avanlira launching?
               <i data-lucide="chevron-down" class="h-4 w-4 transition-transform"></i>
             </summary>
             <p class="mt-3 text-sm leading-6 text-muted-foreground">
-              Yes. The Free plan does not require a card, and you can upgrade when you need more capacity.
+              Avanlira is currently in development. Join our early access waitlist to get notified the moment we launch!
             </p>
           </details>
 
@@ -858,7 +866,7 @@
         <div class="flex flex-wrap items-center gap-4">
           <a href="#" class="hover:text-foreground hover:underline">Terms of Service</a>
           <a href="#" class="hover:text-foreground hover:underline">Privacy Policy</a>
-          <a href="mailto:support@justreachmore.com" class="hover:text-foreground hover:underline">Contact us</a>
+          <a href="mailto:avanlira.official@gmail.com" class="hover:text-foreground hover:underline">avanlira.official@gmail.com</a>
         </div>
       </div>
 
@@ -868,36 +876,71 @@
     </div>
   </footer>
 
-  <!-- Coming Soon Modal -->
-  <div id="coming-soon-modal" class="modal-overlay">
+  <!-- Early Access Waitlist Modal -->
+  <div id="waitlist-modal" class="modal-overlay">
     <div class="modal-container">
       <div class="flex items-center justify-between border-b pb-3">
         <div class="flex items-center gap-2">
           <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
             <i data-lucide="sparkles" class="h-5 w-5"></i>
           </span>
-          <h3 class="text-lg font-bold">Coming Soon</h3>
+          <h3 class="text-lg font-bold">Join Early Access<span id="modal-feature-label"></span></h3>
         </div>
-        <button class="text-muted-foreground hover:text-foreground" onclick="closeComingSoon()">
+        <button class="text-muted-foreground hover:text-foreground" onclick="closeWaitlist()">
           <i data-lucide="x" class="h-5 w-5"></i>
         </button>
       </div>
 
-      <div class="py-5 text-sm leading-6 text-muted-foreground">
-        <p class="font-semibold text-foreground text-base mb-2">
-          Avanlira is launching soon!
+      <!-- Waitlist Form -->
+      <form id="waitlist-form" class="py-4 space-y-4">
+        <p class="text-sm text-muted-foreground">
+          Be among the first Indian small businesses to experience Avanlira when we launch!
         </p>
-        <p>
-          We are currently preparing <strong id="modal-service-name" class="text-foreground">the workspace</strong> for
-          Indian small businesses. Stay tuned for early access announcements.
-        </p>
-      </div>
 
-      <div class="flex justify-end gap-3 border-t pt-4">
-        <button class="rounded-md border border-input bg-background px-4 py-2 text-sm font-semibold hover:bg-muted"
-          onclick="closeComingSoon()">
-          Got it
-        </button>
+        <div>
+          <label class="block text-xs font-semibold uppercase text-muted-foreground mb-1">Your Name</label>
+          <input id="waitlist-name" type="text" required placeholder="e.g. Ramesh Kumar"
+            class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase text-muted-foreground mb-1">Email Address</label>
+          <input id="waitlist-email" type="email" required placeholder="ramesh@example.com"
+            class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase text-muted-foreground mb-1">Business Name / Type</label>
+          <input id="waitlist-biz" type="text" required placeholder="e.g. Bean & Bloom / Bakery Cafe"
+            class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+        </div>
+
+        <div class="flex justify-end gap-3 border-t pt-4">
+          <button type="button" class="rounded-md border border-input bg-background px-4 py-2 text-sm font-semibold hover:bg-muted"
+            onclick="closeWaitlist()">
+            Cancel
+          </button>
+          <button type="submit" class="btn-coming-soon text-sm py-2 px-5">
+            Submit Early Access
+          </button>
+        </div>
+      </form>
+
+      <!-- Waitlist Success State -->
+      <div id="waitlist-success" class="hidden py-6 text-center space-y-3">
+        <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-success/10 text-success">
+          <i data-lucide="check-circle-2" class="h-6 w-6"></i>
+        </div>
+        <h4 class="text-lg font-bold">You're on the list! 🎉</h4>
+        <p class="text-sm text-muted-foreground">
+          Thank you for joining our early access waitlist. We'll send launch updates and early access invites directly to your inbox.
+        </p>
+        <div class="pt-3">
+          <button type="button" class="rounded-md bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+            onclick="closeWaitlist()">
+            Back to site
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -907,7 +950,7 @@
     <div class="modal-container max-w-4xl max-h-[90vh] flex flex-col">
       <div class="flex items-center justify-between border-b pb-3">
         <div>
-          <h3 class="text-lg font-bold">Compare all plans</h3>
+          <h3 class="text-lg font-bold">Compare all launch plans</h3>
           <p class="text-xs text-muted-foreground">Review features and benefits side by side.</p>
         </div>
         <button class="text-muted-foreground hover:text-foreground" onclick="closeComparison()">
@@ -974,8 +1017,8 @@
       </div>
 
       <div class="flex justify-end border-t pt-4">
-        <button class="btn-coming-soon text-sm" onclick="closeComparison(); openComingSoon('Plan Signup');">
-          Coming Soon
+        <button class="btn-coming-soon text-sm" onclick="closeComparison(); openWaitlist('Plan Comparison');">
+          Join Early Access
         </button>
       </div>
     </div>

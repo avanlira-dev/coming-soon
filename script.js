@@ -41,19 +41,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const strikePro = document.getElementById('strike-pro');
 
   window.setBillingInterval = function (interval) {
+    if (!btnMonthly || !btnAnnual) return;
     if (interval === 'monthly') {
       btnMonthly.classList.add('bg-primary', 'text-primary-foreground');
       btnMonthly.classList.remove('text-muted-foreground');
       btnAnnual.classList.remove('bg-primary', 'text-primary-foreground');
       btnAnnual.classList.add('text-muted-foreground');
 
-      priceBasic.textContent = '₹1,199';
-      priceStandard.textContent = '₹2,999';
-      pricePro.textContent = '₹5,999';
+      if (priceBasic) priceBasic.textContent = '₹1,199';
+      if (priceStandard) priceStandard.textContent = '₹2,999';
+      if (pricePro) pricePro.textContent = '₹5,999';
 
-      periodBasic.textContent = '/month';
-      periodStandard.textContent = '/month';
-      periodPro.textContent = '/month';
+      if (periodBasic) periodBasic.textContent = '/month';
+      if (periodStandard) periodStandard.textContent = '/month';
+      if (periodPro) periodPro.textContent = '/month';
 
       if (strikeBasic) strikeBasic.classList.remove('hidden');
       if (strikeStandard) strikeStandard.classList.remove('hidden');
@@ -64,13 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
       btnMonthly.classList.remove('bg-primary', 'text-primary-foreground');
       btnMonthly.classList.add('text-muted-foreground');
 
-      priceBasic.textContent = '₹9,592';
-      priceStandard.textContent = '₹23,992';
-      pricePro.textContent = '₹47,992';
+      if (priceBasic) priceBasic.textContent = '₹9,592';
+      if (priceStandard) priceStandard.textContent = '₹23,992';
+      if (pricePro) pricePro.textContent = '₹47,992';
 
-      periodBasic.textContent = '/year';
-      periodStandard.textContent = '/year';
-      periodPro.textContent = '/year';
+      if (periodBasic) periodBasic.textContent = '/year';
+      if (periodStandard) periodStandard.textContent = '/year';
+      if (periodPro) periodPro.textContent = '/year';
 
       if (strikeBasic) strikeBasic.classList.add('hidden');
       if (strikeStandard) strikeStandard.classList.add('hidden');
@@ -78,23 +79,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Modal Handlers
-  const comingSoonModal = document.getElementById('coming-soon-modal');
+  // Waitlist Modal Handlers
+  const waitlistModal = document.getElementById('waitlist-modal');
   const comparisonModal = document.getElementById('comparison-modal');
-  const modalServiceName = document.getElementById('modal-service-name');
+  const modalFeatureLabel = document.getElementById('modal-feature-label');
+  const waitlistForm = document.getElementById('waitlist-form');
+  const waitlistSuccess = document.getElementById('waitlist-success');
 
-  window.openComingSoon = function (serviceName) {
-    if (modalServiceName) {
-      modalServiceName.textContent = serviceName || 'this feature';
+  window.openWaitlist = function (featureName) {
+    if (modalFeatureLabel) {
+      modalFeatureLabel.textContent = featureName ? ` (${featureName})` : '';
     }
-    if (comingSoonModal) {
-      comingSoonModal.classList.add('active');
+    if (waitlistForm && waitlistSuccess) {
+      waitlistForm.classList.remove('hidden');
+      waitlistSuccess.classList.add('hidden');
+    }
+    if (waitlistModal) {
+      waitlistModal.classList.add('active');
     }
   };
 
-  window.closeComingSoon = function () {
-    if (comingSoonModal) {
-      comingSoonModal.classList.remove('active');
+  window.closeWaitlist = function () {
+    if (waitlistModal) {
+      waitlistModal.classList.remove('active');
     }
   };
 
@@ -110,8 +117,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Waitlist Form Submit Handler
+  if (waitlistForm) {
+    waitlistForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('waitlist-name')?.value || '';
+      const email = document.getElementById('waitlist-email')?.value || '';
+      const biz = document.getElementById('waitlist-biz')?.value || '';
+
+      // Save submission locally
+      const entry = { name, email, biz, date: new Date().toISOString() };
+      const existing = JSON.parse(localStorage.getItem('avanlira_waitlist') || '[]');
+      existing.push(entry);
+      localStorage.setItem('avanlira_waitlist', JSON.stringify(existing));
+
+      // Show success screen
+      if (waitlistForm && waitlistSuccess) {
+        waitlistForm.classList.add('hidden');
+        waitlistSuccess.classList.remove('hidden');
+      }
+    });
+  }
+
   // Close modals on overlay click
-  [comingSoonModal, comparisonModal].forEach((modal) => {
+  [waitlistModal, comparisonModal].forEach((modal) => {
     if (modal) {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -124,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle ESC key for closing modals
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      closeComingSoon();
+      closeWaitlist();
       closeComparison();
     }
   });
