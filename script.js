@@ -187,6 +187,73 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Account Deletion Request Form Handler
+  const deletionForm = document.getElementById('deletion-request-form');
+  const deletionSuccessMsg = document.getElementById('deletion-success-msg');
+
+  if (deletionForm) {
+    deletionForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('deletion-email')?.value || '';
+      const name = document.getElementById('deletion-name')?.value || '';
+      const reason = document.getElementById('deletion-reason')?.value || '';
+      const submitBtn = document.getElementById('deletion-submit-btn');
+      const originalBtnText = submitBtn ? submitBtn.innerHTML : 'Submit Deletion Request';
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting Request...';
+      }
+
+      const entry = {
+        type: 'ACCOUNT_DELETION_REQUEST',
+        email,
+        name,
+        reason,
+        date: new Date().toISOString()
+      };
+
+      // 1. Save submission locally in browser as a backup
+      try {
+        const existing = JSON.parse(localStorage.getItem('avanlira_account_deletions') || '[]');
+        existing.push(entry);
+        localStorage.setItem('avanlira_account_deletions', JSON.stringify(existing));
+      } catch (err) {
+        console.warn('LocalStorage backup error:', err);
+      }
+
+      // 2. Send submission to Google Sheets API endpoint if configured
+      if (GOOGLE_SHEET_WEB_APP_URL && GOOGLE_SHEET_WEB_APP_URL.trim() !== '') {
+        try {
+          await fetch(GOOGLE_SHEET_WEB_APP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'text/plain'
+            },
+            body: JSON.stringify(entry)
+          });
+        } catch (error) {
+          console.error('Error submitting deletion request to Google Sheet:', error);
+        }
+      }
+
+      // Reset button state & hide form
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+      }
+
+      deletionForm.reset();
+      deletionForm.classList.add('hidden');
+
+      if (deletionSuccessMsg) {
+        deletionSuccessMsg.classList.remove('hidden');
+      }
+    });
+  }
+
   // Close modals on overlay click
   [waitlistModal, comparisonModal].forEach((modal) => {
     if (modal) {
